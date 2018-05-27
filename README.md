@@ -2,15 +2,15 @@
 Control remoteControl for shutters via Mysensor 
 This Project gives the possbility to Controll Shutter via vendors Remotcontroll (because of RollingCode).
 
-Goal:
+### Goal:
  - Shutter status in Percent should be adjustable
  - The remote control selects the right shutter by "pressing" the next/before button
 
-You have to know:
+### You have to know:
  - Time in seconds to close a door/window shutter
  - The buttons on the remot needs to be set on GDN or VCC
 
-Working Description:
+### Working Description:
 
 Ever Shutter has a known status by the controller and if the controller gets the Signal lower the shutter it will navigate on the remote to the selected shutter and start down and will stop after the time to set the shutter to the correct status.
 Example: 
@@ -29,5 +29,10 @@ Example:
  - press stop button
  - send msg to gateway with status stoped and reched 100 %
 
-Installation:
+### Installation:
+
 Put the Directory MyTimedShutter in your Libary Directory and define your parameters like in the Sample Sketch
+
+### Problem 
+
+At the moment you can't use the Lib because I've problems with passig a Array of int to the Lib for the doors. I hope it will be soldev during this week.
