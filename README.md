@@ -28,3 +28,6 @@ Example:
  - after 36 seconds press last button
  - press stop button
  - send msg to gateway with status stoped and reched 100 %
+
+Installation:
+Put the Directory MyTimedShutter in your Libary Directory and define your parameters like in the Sample Sketch
