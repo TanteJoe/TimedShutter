@@ -72,6 +72,7 @@
 #ifndef update_timer
 #define update_timer 120000
 #endif
+
 struct isDoorarray{
   int x[];  
 };
@@ -100,6 +101,7 @@ class TimedCover {
    int _goalPercent;
    int _currentPercent; 
    int _countStatusUpdate;
+   int _countStatusUpdate_msg;
    int _CoverId;
    long _downTime;
    long _downTime1Percent;
@@ -119,7 +121,7 @@ class RemoteControlCover
     void downCover(int CoverId);
     void stopCover(int CoverId);
     void percentCover(int CoverId,int CoverPercent);
-    void isDoor(int CoverId);        
+    void isDoorp(int CoverId);        
   private:
     int _currentCover = 1;       
     TimedCover _covers[Number_of_Covers+1];

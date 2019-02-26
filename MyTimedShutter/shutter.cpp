@@ -6,9 +6,10 @@
 /*
 
 */
+
 #include "Arduino.h"
 #include "shutter.h"
-
+int is_door[]={1,2,3,4,12};
 RemoteControlCover::RemoteControlCover() {
 
   for (int i = 0; i < Number_of_Covers; i++) {
@@ -16,7 +17,7 @@ RemoteControlCover::RemoteControlCover() {
   }
   for (int i = 0; i < Number_of_Doors; i++) {
       if (is_door[i]-1<Number_of_Covers) {
-        isDoor(is_door[i]);                  
+        isDoorp(is_door[i]);                  
     }
      else {
        Serial.print("Door to big:");
@@ -78,7 +79,7 @@ void RemoteControlCover::setCover(int CoverId) {
     }
   }
 }
-void RemoteControlCover::isDoor(int CoverId) {  
+void RemoteControlCover::isDoorp(int CoverId) {  
   _covers[CoverId - 1].setDowntime(door_downtime);
   
 }
@@ -126,6 +127,7 @@ bool TimedCover::OnlyMsg() {
   return result;
 }
 void TimedCover::Do() {
+    
   if ((_changed == 1)) {
     if (_goalPercent > _currentPercent) {
       downCover();
@@ -138,10 +140,16 @@ void TimedCover::Do() {
     }
   }  
   else if ((_changed == 0) && (_moving == 1) ) {
+    
     if (millis() <= _endtime) {
-      if (millis() > (_starttime + (_downTime1Percent * _countStatusUpdate * cover_state_msg_percent))) {        
-        _currentPercent = _currentPercent + (cover_state_msg_percent * _direction);        
+      if (millis() > (_starttime + (_downTime1Percent * _countStatusUpdate ))) {        
+        _currentPercent = _currentPercent + (1 * _direction);        
         _countStatusUpdate = _countStatusUpdate + 1;
+        //msgPercent();
+      }
+      if (millis() > (_starttime + (_downTime1Percent * _countStatusUpdate_msg * cover_state_msg_percent))) {        
+                
+        _countStatusUpdate_msg = _countStatusUpdate_msg + 1;
         msgPercent();
       }
     }
